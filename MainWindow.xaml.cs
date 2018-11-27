@@ -636,7 +636,7 @@ namespace Secode
                 }
             }
 
-            if (OptionListBox.SelectedItem == null)
+            if (OptionListBox.SelectedItem == null && OptionListBox.Items.Count > 0)
             {
                 OptionListBox.SelectedIndex = 0;
                 CurrentOption = ((ListBoxItem)OptionListBox.SelectedItem).Content.ToString();
