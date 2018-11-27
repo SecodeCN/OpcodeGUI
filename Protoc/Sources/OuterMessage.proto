@@ -1,0 +1,98 @@
+syntax = "proto3";
+package Secode.Network;
+message Actor_Test // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string Info = 1;
+}
+
+message Actor_TestRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string request = 1;
+}
+
+message Actor_TestResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string response = 1;
+}
+
+message Actor_TransferRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 MapIndex = 1;
+}
+
+message Actor_TransferResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+// 单位信息
+message UnitInfo
+{
+	int64 UnitId = 1;
+}
+
+// 创建单位
+message Actor_CreateUnits // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated UnitInfo Units = 1;
+}
+
+// 进入Map消息
+message C2G_EnterMap // IRequest
+{
+	int32 RpcId = 90;
+}
+
+// 进入Map回传
+message G2C_EnterMap // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 UnitId = 1;
+	int32 Count = 2;
+}
+
+// Ping连接
+message C2R_Ping // IRequest
+{
+	int32 RpcId = 90;
+}
+
+// Ping连接回传
+message R2C_Ping // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+// 重新加载
+message C2M_Reload // IRequest
+{
+	int32 RpcId = 90;
+	string Key = 1; // 请求密钥
+}
+
+// 重新加载回传
+message M2C_Reload // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+// 100

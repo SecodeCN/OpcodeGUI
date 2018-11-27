@@ -1,0 +1,56 @@
+﻿<Window x:Class="Secode.Setting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Secode"
+        mc:Ignorable="d"
+        Title="设置" Width="600" Height="200" Background="#FF373737" MinWidth="650" MinHeight="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GridSplitter Width="5" Grid.Column="1" Grid.RowSpan="4" Background="#FF2D2D30" ></GridSplitter>
+
+            <CheckBox Grid.Row="0" Grid.Column="0" x:Name="ProtocCheckBox" Margin="3,3,3,3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" BorderBrush="White" Background="#7FFFFFFF"/>
+            <Label Grid.Row="0" Grid.Column="1" x:Name="ProtocLabel" Margin="3,3,3,3" Content="Protoc目录" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" />
+            <Label Grid.Row="0" Grid.Column="2" x:Name="ProtocInput" Margin="3,3,3,3" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" RenderTransformOrigin="0,0" BorderBrush="#CCFFFFFF" BorderThickness="1"/>
+            <CheckBox Grid.Row="1" Grid.Column="0" x:Name="AppCheckBox" Margin="3,3,3,3" Background="#7FFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" BorderBrush="White"/>
+            <Label Grid.Row="1" Grid.Column="1" x:Name="AppLabel" Margin="3,3,3,3" Content="Protoc应用" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" />
+            <Label Grid.Row="1" Grid.Column="2" x:Name="AppInput" Margin="3,3,3,3" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" RenderTransformOrigin="0,0" BorderBrush="#CCFFFFFF" BorderThickness="1" />
+            <CheckBox Grid.Row="2" Grid.Column="0" x:Name="SourceCheckBox" Margin="3,3,3,3" Background="#7FFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" BorderBrush="White"/>
+            <Label Grid.Row="2" Grid.Column="1" x:Name="SourceLabel" Margin="3,3,3,3" Content="源文件目录" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" />
+            <Label Grid.Row="2" Grid.Column="2" x:Name="SourceInput" Margin="3,3,3,3" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" RenderTransformOrigin="0,0" BorderBrush="#CCFFFFFF" BorderThickness="1"/>
+            <CheckBox Grid.Row="3" Grid.Column="0" x:Name="OutputCheckBox" Margin="3,3,3,3" Background="#7FFFFFFF" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" BorderBrush="White"/>
+            <Label Grid.Row="3" Grid.Column="1" x:Name="OutputLabel" Margin="3,3,3,3" Content="输出目录" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" />
+            <Label Grid.Row="3" Grid.Column="2" x:Name="OutputInput" Margin="3,3,3,3" Background="{x:Null}" VerticalContentAlignment="Center" Foreground="White" RenderTransformOrigin="0,0" BorderBrush="#CCFFFFFF" BorderThickness="1" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" x:Name="OKButton" Content="确认"  Margin="3" Cursor="Hand" Background="{x:Null}" Foreground="White" Click="OKButton_Click"/>
+                <Button Grid.Column="1" x:Name="BackButton" Content="取消"  Margin="3" Cursor="Hand" Background="{x:Null}" Foreground="White" Click="BackButton_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,140 @@
+syntax = "proto3";
+package Secode.Network;
+// 三维坐标信息
+message Vector3Info
+{
+	float X = 1;
+	float Y = 2;
+	float Z = 3;
+}
+
+// 四元数坐标信息
+message QuaternionInfo
+{
+	float X = 1;
+	float Y = 2;
+	float Z = 3;
+	float W = 4;
+}
+
+// 变换信息
+message TransformInfo
+{
+	int32 RpcId = 90;
+	Vector3Info Position = 1; // 位置
+	QuaternionInfo Rotation = 2; // 旋转
+	Vector3Info Scale = 3; // 放缩
+}
+
+// 无放缩变换信息
+message TransformInfoNoScale
+{
+	int32 RpcId = 90;
+	Vector3Info Position = 1; // 位置
+	QuaternionInfo Rotation = 2; // 旋转
+}
+
+// VR角色信息
+message PlayerInfo
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1; // 玩家的临时ID
+	TransformInfoNoScale Head = 2; // 头盔
+	TransformInfoNoScale LeftHand = 3; // 左手手柄
+	TransformInfoNoScale RightHand = 4; // 右手手柄
+}
+
+// 登录请求信息
+message C2R_Login // IRequest
+{
+	int32 RpcId = 90;
+	string UserID = 1; // 帐号
+	string Password = 2; // 密码
+}
+
+// 登录回传信息
+message R2C_Login // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Key = 1; // 连接钥匙
+	repeated string Gates = 2; // 房间门列表
+}
+
+// 新建房间
+message C2R_NewGate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Key = 1; // 连接钥匙
+	string Name = 2; // 房间名称
+	string SecretKey = 3; // 授权钥匙
+}
+
+// 新建房间回传信息
+message R2C_NewGate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Gate = 1; // 房间门
+}
+
+// 连接房间信息
+message C2G_Link // IRequest
+{
+	int32 RpcId = 90;
+	int64 Key = 1; // 连接钥匙
+	string Gate = 2; // 房间门
+}
+
+// 房间连接回传信息
+message G2C_Link // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 PlayerId = 1; // 玩家的临时ID
+}
+
+// 请求用户信息
+message C2G_Info // IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1; // 玩家的临时ID
+}
+
+// 用户信息回传
+message G2C_Info // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerInfo PlayerInfo = 1; // 玩家数据
+}
+
+// 请求用户列表
+message C2G_Players // IRequest
+{
+	int32 RpcId = 90;
+	int64 PlayerId = 1; // 玩家的临时ID
+}
+
+// 用户列表回传
+message G2C_Players // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 PlayerId = 1; // 玩家的临时ID列表
+}
+
+// 用户移动消息
+message Frame_PlayerMove // IFrameMessage
+{
+	int32 RpcId = 90;
+	int64 Id = 94;
+	PlayerInfo PlayerInfo = 1;
+}
+
+// 10000
